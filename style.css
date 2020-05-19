@@ -1,0 +1,39 @@
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+  min-height: 780px;
+}
+
+.product_container {
+  width: 600px;
+}
+
+.product_image {
+  align-self: center;
+}
+
+.product_image img {
+  width: 400px;
+  height: 400px;
+}
+
+.hovered_block {
+  margin: 4px;
+  width: 40px;
+  height: 40px;
+}
+
+.hover .block1 {
+  background-color: red;
+}
+
+.hover .block2 {
+  background-color: green;
+}

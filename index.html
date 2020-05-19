@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product component page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="product">
+        <div class="product_image product_container">
+          <img :src="img[0]" alt="" />
+        </div>
+        <div class="product_info product_container">
+          <h1>{{title}}</h1>
+          <p>{{description}}</p>
+          <div class="available">
+            <p v-if="isAvailable">we have socks</p>
+            <p v-else="isAvailable">we do not have socks</p>
+          </div>
+          <div class="hover">
+            <div class="block1 hovered_block"></div>
+            <div class="block2 hovered_block"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
