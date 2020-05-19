@@ -16,8 +16,9 @@
           <h1>{{title}}</h1>
           <p>{{description}}</p>
           <div class="available">
-            <p v-if="isAvailable">we have socks</p>
-            <p v-else="isAvailable">we do not have socks</p>
+            <p v-if="inventory > 1">we have more socks</p>
+            <p v-else-if="inventory === 1">we have 1 socks</p>
+            <p v-else>we do not have socks</p>
           </div>
           <div class="hover">
             <div class="block1 hovered_block"></div>

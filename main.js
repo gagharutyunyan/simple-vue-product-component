@@ -4,6 +4,6 @@ const app = new Vue({
     title: "Product",
     description: "My best product",
     img: ["/img/first-sock.jpg", "/img/second-sock.jpg"],
-    isAvailable: true,
+    inventory: 2,
   },
 });
