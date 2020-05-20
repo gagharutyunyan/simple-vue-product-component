@@ -10,7 +10,7 @@
     <div id="app">
       <div class="product">
         <div class="product_image product_container">
-          <img :src="img[0]" alt="" />
+          <img :src="image" alt="" />
         </div>
         <div class="product_info product_container">
           <h1>{{title}}</h1>
@@ -29,8 +29,14 @@
               v-for="variant in variants"
               :key="variant.id"
             >
-              {{variant.variantColor}}
+              <p @mouseover="updateProduct(variant.img)">
+                {{variant.variantColor}}
+              </p>
             </div>
+          </div>
+          <div class="order">
+            <button class="add_btn" @click="addToCart">Add to cart</button>
+            <div class="cart_btn">Cart({{cart}})</div>
           </div>
         </div>
       </div>
