@@ -3,12 +3,16 @@ const app = new Vue({
   data: {
     title: "Product",
     description: "My best product",
-    inventory: 2,
-    image: "/img/first-sock.jpg",
+    selectedItem: 0,
     details: ["100% cotton", "for kids"],
     variants: [
-      { id: 1, variantColor: "red", img: "/img/first-sock.jpg" },
-      { id: 2, variantColor: "green", img: "/img/second-sock.jpg" },
+      { id: 1, variantColor: "red", img: "/img/first-sock.jpg", quantity: 10 },
+      {
+        id: 2,
+        variantColor: "green",
+        img: "/img/second-sock.jpg",
+        quantity: 5,
+      },
     ],
     cart: 0,
   },
@@ -20,19 +24,31 @@ const app = new Vue({
       this.cart -= 1;
     },
     isDisabled(variant) {
-      console.log(variant);
       switch (variant) {
         case "add":
-          return this.cart >= this.inventory ? true : false;
+          return this.cart >= this.variants[this.selectedItem].quantity
+            ? true
+            : false;
         case "delete":
           return this.cart <= 0 ? true : false;
         default:
           return false;
       }
     },
-    updateProductImg(img) {
-      if (img === this.image) return;
-      this.image = img;
+    updateProduct(item) {
+      this.selectedItem = item;
+      this.cart = 0;
+    },
+  },
+  computed: {
+    image() {
+      return this.variants[this.selectedItem].img;
+    },
+    inventory() {
+      const count = this.variants.reduce((acc, curr) => {
+        return acc.quantity + curr.quantity;
+      });
+      return count;
     },
   },
 });
