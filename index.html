@@ -28,14 +28,22 @@
               class="hovered_block"
               v-for="variant in variants"
               :key="variant.id"
-            >
-              <p @mouseover="updateProduct(variant.img)">
-                {{variant.variantColor}}
-              </p>
-            </div>
+              class="cart_choice_block"
+              :style="{backgroundColor: variant.variantColor}"
+              @mouseover="updateProductImg(variant.img)"
+            ></div>
           </div>
           <div class="order">
-            <button class="add_btn" @click="addToCart">Add to cart</button>
+            <button
+              class="add_btn"
+              @click="addToCart"
+              :disabled="isDisabled('add')"
+            >
+              Add to cart
+            </button>
+            <button @click="delToCart" :disabled="isDisabled('delete')">
+              Del
+            </button>
             <div class="cart_btn">Cart({{cart}})</div>
           </div>
         </div>

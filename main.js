@@ -16,9 +16,22 @@ const app = new Vue({
     addToCart() {
       this.cart += 1;
     },
-    updateProduct(img) {
+    delToCart() {
+      this.cart -= 1;
+    },
+    isDisabled(variant) {
+      console.log(variant);
+      switch (variant) {
+        case "add":
+          return this.cart >= this.inventory ? true : false;
+        case "delete":
+          return this.cart <= 0 ? true : false;
+        default:
+          return false;
+      }
+    },
+    updateProductImg(img) {
       if (img === this.image) return;
-      console.log("object");
       this.image = img;
     },
   },

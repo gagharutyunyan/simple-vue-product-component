@@ -37,3 +37,8 @@
 .hover .block2 {
   background-color: green;
 }
+
+.cart_color {
+  width: 40px;
+  height: 40px;
+}
