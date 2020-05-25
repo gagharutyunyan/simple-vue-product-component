@@ -7,48 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app">
-      <div class="product">
-        <div class="product_image product_container">
-          <img :src="image" alt="" />
-        </div>
-        <div class="product_info product_container">
-          <h1>{{title}}</h1>
-          <p>{{description}}</p>
-          <ul>
-            <li v-for="detail in details">{{detail}}</li>
-          </ul>
-          <div class="available">
-            <p v-if="inventory > 1">we have {{inventory}} socks</p>
-            <p v-else-if="inventory === 1">we have 1 socks</p>
-            <p v-else>we do not have socks</p>
-          </div>
-          <div class="hover">
-            <div
-              class="hovered_block"
-              v-for="(variant,index) in variants"
-              :key="variant.id"
-              class="cart_choice_block"
-              :style="{backgroundColor: variant.variantColor}"
-              @mouseover="updateProduct(index)"
-            ></div>
-          </div>
-          <div class="order">
-            <button
-              class="add_btn"
-              @click="addToCart"
-              :disabled="isDisabled('add')"
-            >
-              Add to cart
-            </button>
-            <button @click="delToCart" :disabled="isDisabled('delete')">
-              Del
-            </button>
-            <div class="cart_btn">Cart({{cart}})</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="app"><product :cost="cost"></product>></div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
