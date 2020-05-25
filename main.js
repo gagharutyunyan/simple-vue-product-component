@@ -1,7 +1,7 @@
 Vue.component("product", {
   props: {
     cost: {
-      type: Boolean,
+      type: String,
       required: true,
     },
   },
@@ -32,17 +32,12 @@ Vue.component("product", {
             ></div>
           </div>
           <div class="order">
-            <button
-              class="add_btn"
-              @click="addToCart"
-              :disabled="isDisabled('add')"
-            >
-              Add to cart
-            </button>
+          <button @click="addToCart" :disabled="isDisabled('add')">
+          add
+        </button>
             <button @click="delToCart" :disabled="isDisabled('delete')">
               Del
             </button>
-            <div class="cart_btn">Cart({{cart}})</div>
           </div>
         </div>
       </div>
@@ -67,12 +62,11 @@ Vue.component("product", {
           quantity: 5,
         },
       ],
-      cart: 0,
     };
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit("add-to-cart");
     },
     delToCart() {
       this.cart -= 1;
@@ -110,4 +104,14 @@ Vue.component("product", {
 
 const app = new Vue({
   el: "#app",
+  data: {
+    cost: "hi",
+    cart: 0,
+  },
+  methods: {
+    updateCart() {
+      this.cart += 1;
+      console.log("object");
+    },
+  },
 });
